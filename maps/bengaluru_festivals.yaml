@@ -1,0 +1,9 @@
+# maps/bengaluru_festivals.yaml
+festivals:
+  - name: "Dussehra"
+    month: 10
+    day_range: [1, 10]
+    affected_junctions: ["silk_board", "marathahalli"]
+    demand_multiplier: 3.0
+    hours: [10, 23]
+    festival_type_id: 6

@@ -1,0 +1,34 @@
+city: "Pune"
+cluster_name: "Deccan Gymkhana"
+n_agents: 4
+junction_ids: ["dec_gym", "fc_road", "karve_rd", "nal_stop"]
+topology:
+  dec_gym:  {E: fc_road,  S: karve_rd}
+  fc_road:  {W: dec_gym,  S: nal_stop}
+  karve_rd: {N: dec_gym,  E: nal_stop}
+  nal_stop: {N: fc_road,  W: karve_rd}
+junction_arms:
+  dec_gym: 4
+  fc_road: 4
+  karve_rd: 4
+  nal_stop: 4
+emergency_multipliers: {dec_gym: 2.0, fc_road: 1.0, karve_rd: 1.0, nal_stop: 1.0}
+emission_multipliers:  {dec_gym: 1.0, fc_road: 1.0, karve_rd: 1.5, nal_stop: 1.0}
+ped_bonuses:           {dec_gym: 0.5, fc_road: 0.5, karve_rd: 0.3, nal_stop: 1.0}
+road_capacity:
+  dec_gym_fc_road: 1200
+  dec_gym_karve_rd: 800
+  fc_road_nal_stop: 900
+  karve_rd_nal_stop: 700
+inter_junction_distance:
+  dec_gym_fc_road: 320
+  dec_gym_karve_rd: 280
+  fc_road_nal_stop: 350
+  karve_rd_nal_stop: 290
+net_file: "sumo/pune/pune.net.xml"
+festivals_file: "maps/pune_festivals.yaml"
+demand_files:
+  offpeak: "sumo/pune/demand_offpeak.rou.xml"
+  rush: "sumo/pune/demand_rush.rou.xml"
+  emergency: "sumo/pune/demand_emergency.rou.xml"
+  night: "sumo/pune/demand_night.rou.xml"

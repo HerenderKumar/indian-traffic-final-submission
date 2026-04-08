@@ -1,0 +1,41 @@
+# maps/bengaluru.yaml
+city: "Bengaluru"
+cluster_name: "Outer Ring Road"
+n_agents: 5
+junction_ids: ["silk_board", "hsr_layout", "bellandur", "marathahalli", "kr_puram"]
+topology:
+  silk_board: {N: hsr_layout, E: bellandur, S: marathahalli, W: kr_puram} # 5th arm is an unmapped local road
+  hsr_layout: {S: silk_board, E: bellandur}
+  bellandur: {W: hsr_layout, N: marathahalli}
+  marathahalli: {S: bellandur, N: kr_puram}
+  kr_puram: {S: marathahalli, E: silk_board}
+junction_arms:
+  silk_board: 5  # The infamous 5-way junction
+  hsr_layout: 4
+  bellandur: 4
+  marathahalli: 4
+  kr_puram: 4
+emergency_multipliers: {silk_board: 2.5, hsr_layout: 1.0, bellandur: 1.5, marathahalli: 1.0, kr_puram: 1.0}
+emission_multipliers:  {silk_board: 2.0, hsr_layout: 1.0, bellandur: 1.0, marathahalli: 1.5, kr_puram: 1.0}
+ped_bonuses:           {silk_board: 0.2, hsr_layout: 0.5, bellandur: 0.5, marathahalli: 0.8, kr_puram: 0.5}
+road_capacity:
+  silk_board_hsr_layout: 1500
+  silk_board_bellandur: 1400
+  hsr_layout_bellandur: 1200
+  bellandur_marathahalli: 1300
+  marathahalli_kr_puram: 1100
+  kr_puram_silk_board: 1250
+inter_junction_distance:
+  silk_board_hsr_layout: 500
+  silk_board_bellandur: 450
+  hsr_layout_bellandur: 600
+  bellandur_marathahalli: 800
+  marathahalli_kr_puram: 700
+  kr_puram_silk_board: 1200
+net_file: "sumo/bengaluru/bengaluru.net.xml"
+festivals_file: "maps/bengaluru_festivals.yaml"
+demand_files:
+  offpeak: "sumo/bengaluru/demand_offpeak.rou.xml"
+  rush: "sumo/bengaluru/demand_rush.rou.xml"
+  emergency: "sumo/bengaluru/demand_emergency.rou.xml"
+  night: "sumo/bengaluru/demand_night.rou.xml"

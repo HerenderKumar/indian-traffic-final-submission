@@ -1,0 +1,65 @@
+# openenv.yaml
+name: indian-traffic-signal-controller
+version: "4.0.0"
+description: >
+  Hierarchical multi-agent RL environment for Indian urban traffic signal control.
+  Graph Attention Network policy + NetworkCoordinator + Reptile meta-learning +
+  fairness-constrained reward. Runs on real OSM geometry across 4 Indian cities.
+  Features festival demand calendar, sensor noise robustness, zero-shot and
+  rapid (100-step) city adaptation.
+
+domain: infrastructure
+real_world_task: true
+task_category: traffic-signal-control
+
+observation_space:
+  type: dict
+  description: "Per-agent 70-float: queue(48)+phase(9)+time(3)+emergency(3)+neighbor(4)+weather(1)+festival(2)+coordinator_priority(1)"
+  flat_dim: 70
+  agents: 4
+
+action_space:
+  type: multi_discrete
+  per_agent_dims: [8, 4]
+  agents: 4
+
+reward:
+  type: dense
+  range: [-2.0, 52.0]
+  description: "8 terms: wait + queue + throughput + emission + emergency + spillback + phase_skip + fairness"
+
+tasks:
+  - id: task_easy
+    name: "Single Intersection — Off-Peak"
+    difficulty: easy
+    grader: ReduceWaitGrader
+    success_threshold: 0.6
+
+  - id: task_medium
+    name: "4-Intersection Rush Hour + Fairness"
+    difficulty: medium
+    grader: CooperativeFlowGrader
+    success_threshold: 0.5
+
+  - id: task_hard
+    name: "Zero-Shot Bengaluru + Emergency"
+    difficulty: hard
+    grader: ZeroShotEmergencyGrader
+    success_threshold: 0.4
+
+cities_supported: [pune, bengaluru, chennai, hyderabad]
+
+baseline_scores:
+  task_easy:   0.71
+  task_medium: 0.58
+  task_hard:   0.44
+
+inference_script: inference.py
+api_env_vars: [API_BASE_URL, MODEL_NAME, HF_TOKEN]
+
+docker:
+  build_context: "."
+  port: 7860
+
+tags: [openenv, traffic, multi-agent, india, reinforcement-learning,
+       gnn, hierarchical-rl, meta-learning, fairness, infrastructure]

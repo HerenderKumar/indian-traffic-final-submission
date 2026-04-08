@@ -1,0 +1,35 @@
+# maps/chennai.yaml
+city: "Chennai"
+cluster_name: "T Nagar"
+n_agents: 4
+junction_ids: ["panagal_park", "pondy_bazaar", "gn_chetty", "venkatanarayana"]
+topology:
+  panagal_park: {E: pondy_bazaar, S: venkatanarayana}
+  pondy_bazaar: {W: panagal_park, S: gn_chetty}
+  gn_chetty: {N: pondy_bazaar, W: venkatanarayana}
+  venkatanarayana: {N: panagal_park, E: gn_chetty}
+junction_arms:
+  panagal_park: 3
+  pondy_bazaar: 3
+  gn_chetty: 3
+  venkatanarayana: 3
+emergency_multipliers: {panagal_park: 1.5, pondy_bazaar: 2.0, gn_chetty: 1.0, venkatanarayana: 1.0}
+emission_multipliers:  {panagal_park: 1.2, pondy_bazaar: 1.5, gn_chetty: 1.0, venkatanarayana: 1.0}
+ped_bonuses:           {panagal_park: 1.0, pondy_bazaar: 1.0, gn_chetty: 0.5, venkatanarayana: 0.5}
+road_capacity:
+  panagal_park_pondy_bazaar: 1000
+  panagal_park_venkatanarayana: 800
+  pondy_bazaar_gn_chetty: 900
+  gn_chetty_venkatanarayana: 850
+inter_junction_distance:
+  panagal_park_pondy_bazaar: 400
+  panagal_park_venkatanarayana: 350
+  pondy_bazaar_gn_chetty: 300
+  gn_chetty_venkatanarayana: 380
+net_file: "sumo/chennai/chennai.net.xml"
+festivals_file: "maps/chennai_festivals.yaml"
+demand_files:
+  offpeak: "sumo/chennai/demand_offpeak.rou.xml"
+  rush: "sumo/chennai/demand_rush.rou.xml"
+  emergency: "sumo/chennai/demand_emergency.rou.xml"
+  night: "sumo/chennai/demand_night.rou.xml"

@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+myenv/
+.pytest_cache/
+
+# Environments & OS
+.env
+.DS_Store
+*.log
+
+# Project specific
+results/

@@ -1,0 +1,33 @@
+# maps/pune_festivals.yaml
+festivals:
+  - name: "Ganesh Chaturthi procession"
+    month: 9
+    day_range: [7, 11]
+    affected_junctions: ["dec_gym", "nal_stop"]
+    demand_multiplier: 4.0
+    hours: [17, 23]
+    festival_type_id: 1
+
+  - name: "Diwali eve"
+    month: 11
+    day_range: [1, 2]
+    affected_junctions: ["dec_gym", "fc_road", "nal_stop"]
+    demand_multiplier: 3.5
+    hours: [18, 22]
+    festival_type_id: 2
+
+  - name: "IPL match day"
+    month_range: [3, 6]
+    day_of_week: [5, 6]
+    affected_junctions: ["fc_road"]
+    demand_multiplier: 2.0
+    hours: [19, 22]
+    festival_type_id: 3
+
+  - name: "Navratri garba nights"
+    month: 10
+    day_range: [1, 10]
+    affected_junctions: ["nal_stop", "karve_rd"]
+    demand_multiplier: 2.5
+    hours: [20, 24]
+    festival_type_id: 4

@@ -1,0 +1,14 @@
+{
+    "model_name": "TrafficGATActor_MetaLearned",
+    "baseline_name": "Fixed_60s_Timer",
+    "metrics": {
+        "total_ambulance_wait_time": {
+            "ai": 45,
+            "baseline": 180
+        },
+        "wasted_green_time": {
+            "ai": 15,
+            "baseline": 60
+        }
+    }
+}
