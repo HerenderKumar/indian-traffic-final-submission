@@ -14,7 +14,9 @@ dependencies = [
     "pydantic>=2.0.0",
     "torch",
     "pyyaml",
-    "openenv-core>=0.2.0"
+    "openenv-core>=0.2.0",
+    "openai",          
+    "numpy"
 ]
 
 [project.scripts]
