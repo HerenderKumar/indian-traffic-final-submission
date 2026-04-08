@@ -1,3 +1,10 @@
+import sys
+import subprocess
+try:
+    import openai
+except ImportError:
+    print("Forcing openai installation...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "openai", "numpy"])
 import os
 import json
 import time
